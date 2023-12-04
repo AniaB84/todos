@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>Wydatki</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        table, th, tr, td {border: 1px solid rgb(0, 195, 255);}
+    </style>
+</head>
+<body>
+<h2 style="size:45px; color:rgba(16, 216, 16, 0.768)">Domowe wydatki</h2>
+<img src="https://cdn.pixabay.com/photo/2017/08/30/07/56/money-2696229_640.jpg" alt="Zdjęcie pieniędzy" title="kasa" width="1400" height="220 style="display:block">
+<table>
+    <thead>
+    <th>Tytuł</th>
+    <th>Opis</th>
+    <th>Czy zrobione?</th>
+    </thead>
+{% for todo in todos %}
+    <tr>
+        <td><a href="/todos/{{ loop.index }}">{{ todo.title }}</a></td>
+        <td>{{ todo.description }}</td>
+        <td>{{ todo.done }}</td>
+    </tr>
+{% endfor %}
+</table>
+<div>
+    <h2 style="size:45px; color:rgba(16, 216, 16, 0.768)"> Dodaj nowe wydatki: </h2>
+    <form method="POST" action="/todos/">
+        {{ form.hidden_tag() }}
+        <table>
+            {% for field in form if field.widget.input_type != 'hidden' %}
+                <tr>
+                    <th>{{ field.label }} {% if field.flags.required %}*{% endif %}</th>
+                    <td>{{ field }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <input type="submit" value="Go">
+    </form>
+</div>
+
+</body>
+</html>
