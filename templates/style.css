@@ -1,7 +1,3 @@
-img {
-    margin-right: 80px;
-}
-
-body {
-    background-color: rgba(128, 128, 128, 0.878);
+.first {
+    size:45px; color:rgba(16, 216, 16, 0.768)
 }
