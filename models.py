@@ -13,10 +13,7 @@ class Todos:
         return self.todos
 
     def get(self, id):
-        todo = [todo for todo in self.all() if todo['id'] == id]
-        if todo:
-           return todo[0]
-        return []
+        return self.todos[id]
 
     def create(self, data):
         self.todos.append(data)
